@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ICC Cricket Dashboard</title>
+  <style>
+    /* ====== Global Styles ====== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background: #004080;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      background: #0066cc;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.8rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1rem;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #004080;
+    }
+
+    .score {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .btn-refresh {
+      display: inline-block;
+      background: #004080;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-refresh:hover {
+      background: #0066cc;
+    }
+
+    footer {
+      background: #004080;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🏏 ICC Cricket Dashboard</h1>
+    <p>Live Scores • Player Stats • Latest News</p>
+  </header>
+
+  <nav>
+    <a href="#scores">Live Scores</a>
+    <a href="#stats">Player Stats</a>
+    <a href="#news">Latest News</a>
+  </nav>
+
+  <main class="container">
+    <!-- Scores Section -->
+    <section class="card" id="scores">
+      <h3>Live Match Scores</h3>
+      <div id="scoreboard">
+        <p class="score">India: 245/6 (45.2)</p>
+        <p class="score">Australia: 280/9 (50)</p>
+      </div>
+      <button class="btn-refresh" onclick="refreshScores()">🔄 Refresh Scores</button>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="card" id="stats">
+      <h3>Top Player Stats</h3>
+      <ul id="player-stats">
+        <li>Virat Kohli - 85 Runs</li>
+        <li>Steve Smith - 72 Runs</li>
+        <li>Jasprit Bumrah - 3 Wickets</li>
+      </ul>
+      <button class="btn-refresh" onclick="refreshStats()">🔄 Update Stats</button>
+    </section>
+
+    <!-- News Section -->
+    <section class="card" id="news">
+      <h3>Latest ICC News</h3>
+      <ul id="news-feed">
+        <li>India wins thrilling ODI against Australia</li>
+        <li>ICC announces new World Cup venues</li>
+        <li>Top 10 bowlers ranking updated</li>
+      </ul>
+      <button class="btn-refresh" onclick="refreshNews()">🔄 Refresh News</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ICC Cricket Dashboard | Made with ❤️ for Cricket Fans</p>
+  </footer>
+
+  <script>
+    // ====== JavaScript for Dynamic Content ======
+    function refreshScores() {
+      const scores = [
+        "India: 310/7 (50) • Pakistan: 289/9 (50)",
+        "England: 220/5 (40) • South Africa: 215/8 (40)",
+        "Australia: 280/9 (50) • New Zealand: 245/10 (48.3)"
+      ];
+      document.getElementById("scoreboard").innerHTML =
+        "<p class='score'>" + scores[Math.floor(Math.random() * scores.length)] + "</p>";
+    }
+
+    function refreshStats() {
+      const stats = [
+        "<li>Virat Kohli - 102 Runs</li><li>Pat Cummins - 4 Wickets</li>",
+        "<li>Babar Azam - 88 Runs</li><li>Shaheen Afridi - 3 Wickets</li>",
+        "<li>Rohit Sharma - 75 Runs</li><li>Mitchell Starc - 2 Wickets</li>"
+      ];
+      document.getElementById("player-stats").innerHTML =
+        stats[Math.floor(Math.random() * stats.length)];
+    }
+
+    function refreshNews() {
+      const news = [
+        "<li>India enters ICC Finals after dramatic win</li><li>ICC T20 Rankings updated</li>",
+        "<li>Australia seals series victory</li><li>New World Test Championship rules</li>",
+        "<li>Pakistan rises in ODI rankings</li><li>England unveils new cricket kit</li>"
+      ];
+      document.getElementById("news-feed").innerHTML =
+        news[Math.floor(Math.random() * news.length)];
+    }
+  </script>
+</body>
+</html>
